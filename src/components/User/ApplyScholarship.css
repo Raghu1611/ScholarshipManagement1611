@@ -1,0 +1,133 @@
+/* ApplyScholarship.css */
+
+/* Container for the entire component */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  background-color: #f4f7fc;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  font-family: 'Arial', sans-serif;
+}
+
+/* Header styling */
+h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #2c3e50;
+  margin-bottom: 40px;
+  font-weight: bold;
+}
+
+/* Individual scholarship card */
+.scholarship-card {
+  background-color: #fff;
+  padding: 25px;
+  margin-bottom: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.scholarship-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.scholarship-card h2 {
+  font-size: 1.8rem;
+  color: #34495e;
+  margin-bottom: 15px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.scholarship-card p {
+  font-size: 1.1rem;
+  color: #7f8c8d;
+  margin-bottom: 12px;
+  line-height: 1.6;
+}
+
+.scholarship-card p strong {
+  color: #2c3e50;
+}
+
+.scholarship-card button {
+  background-color: #2980b9;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  display: inline-block;
+  margin-top: 15px;
+}
+
+.scholarship-card button:hover {
+  background-color: #3498db;
+  transform: scale(1.05);
+}
+
+.scholarship-card button:focus {
+  outline: none;
+}
+
+.scholarship-card button:active {
+  background-color: #1d70a7;
+}
+
+/* No scholarships message */
+.no-scholarships {
+  text-align: center;
+  font-size: 1.3rem;
+  color: #e74c3c;
+  margin-top: 30px;
+  font-weight: bold;
+}
+
+/* Responsive design */
+@media screen and (max-width: 768px) {
+  .container {
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  .scholarship-card {
+    padding: 20px;
+  }
+
+  .scholarship-card h2 {
+    font-size: 1.5rem;
+  }
+
+  .scholarship-card button {
+    font-size: 1rem;
+    padding: 10px 20px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .container {
+    padding: 15px;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  .scholarship-card h2 {
+    font-size: 1.3rem;
+  }
+
+  .scholarship-card button {
+    font-size: 0.9rem;
+    padding: 8px 18px;
+  }
+}
