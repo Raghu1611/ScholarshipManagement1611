@@ -1,0 +1,154 @@
+/* General container styling */
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 30px;
+  font-family: 'Roboto', sans-serif;
+  background: linear-gradient(135deg, #e3f2fd, #ffffff);
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* Page title */
+.container h1 {
+  text-align: center;
+  color: #1e88e5;
+  margin-bottom: 30px;
+  font-size: 32px;
+  font-weight: bold;
+}
+
+/* Email input section */
+.email-input {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.email-input label {
+  font-size: 18px;
+  font-weight: bold;
+  color: #555;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.email-input input {
+  width: 80%;
+  padding: 12px 15px;
+  border: 2px solid #90caf9;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+}
+
+.email-input input:focus {
+  border-color: #1e88e5;
+  outline: none;
+  box-shadow: 0 0 8px rgba(30, 136, 229, 0.3);
+}
+
+/* Scholarship card styling */
+.scholarship-card {
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.scholarship-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.scholarship-card h2 {
+  font-size: 22px;
+  color: #37474f;
+  margin-bottom: 10px;
+}
+
+.scholarship-card p {
+  font-size: 16px;
+  color: #607d8b;
+  margin: 8px 0;
+  line-height: 1.5;
+}
+
+.scholarship-card strong {
+  color: #1e88e5;
+}
+
+/* Apply button styling */
+.scholarship-card button {
+  display: inline-block;
+  background: linear-gradient(90deg, #42a5f5, #1e88e5);
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.scholarship-card button:hover {
+  background: linear-gradient(90deg, #1e88e5, #1565c0);
+  transform: scale(1.05);
+}
+
+/* No scholarships available message */
+.no-scholarships {
+  text-align: center;
+  font-size: 18px;
+  color: #9e9e9e;
+  margin-top: 30px;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .container {
+    padding: 20px;
+  }
+
+  .email-input input {
+    width: 100%;
+  }
+
+  .scholarship-card {
+    padding: 15px;
+  }
+
+  .scholarship-card h2 {
+    font-size: 20px;
+  }
+
+  .scholarship-card p {
+    font-size: 14px;
+  }
+
+  .scholarship-card button {
+    padding: 8px 15px;
+    font-size: 12px;
+  }
+}
+
+/* Animation for cards on load */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.scholarship-card {
+  animation: fadeIn 0.8s ease;
+}

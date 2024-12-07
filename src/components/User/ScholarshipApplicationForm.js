@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-
+import './ApplyScholarship.css'
 const ScholarshipApplicationForm = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -8,8 +8,6 @@ const ScholarshipApplicationForm = () => {
     qualification: "",
     tenthMarks: "",
     interMarks: "",
-    graduationMarks: "",
-    postGradMarks: "",
     phone: "",
     reason: "",
     bankDetails: "",
@@ -18,11 +16,7 @@ const ScholarshipApplicationForm = () => {
   const [files, setFiles] = useState({
     tenthCertificate: null,
     interCertificate: null,
-    graduationCertificate: null,
-    postGradCertificate: null,
-    incomeProof: null,
     casteCertificate: null,
-    domicileCertificate: null,
   });
 
   const handleChange = (e) => {
@@ -60,141 +54,238 @@ const ScholarshipApplicationForm = () => {
     }
   };
 
+  const qualificationOptions = [
+    "High School",
+    "Intermediate",
+    "Graduate",
+    "Post Graduate",
+    "Professional Degree"
+  ];
+
+  const gradeOptions = [
+    { value: "33", label: "First Division (>60%)" },
+    { value: "66", label: "Second Division (45-59%)" },
+    { value: "33", label: "Third Division (33-44%)" }
+  ];
+
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label>Name:</label>
-        <input
-          type="text"
-          name="name"
-          value={formData.name}
-          onChange={handleChange}
-          required
-        />
+    <div className="bg-gray-100 min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-2xl w-full bg-white shadow-lg rounded-xl p-8">
+        <h2 className="text-center text-3xl font-extrabold text-gray-900 mb-8">
+          Scholarship Application Form
+        </h2>
+        <form onSubmit={handleSubmit} className="space-y-6">
+          <div className="grid md:grid-cols-2 gap-6">
+            {/* Personal Information */}
+            <div>
+              <label htmlFor="name" className="block text-sm font-medium text-gray-700">
+                Full Name
+              </label>
+              <input
+                type="text"
+                name="name"
+                id="name"
+                required
+                value={formData.name}
+                onChange={handleChange}
+                className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+              />
+            </div>
+
+            <div>
+              <label htmlFor="dob" className="block text-sm font-medium text-gray-700">
+                Date of Birth
+              </label>
+              <input
+                type="date"
+                name="dob"
+                id="dob"
+                required
+                value={formData.dob}
+                onChange={handleChange}
+                className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+              />
+            </div>
+          </div>
+
+          {/* Qualification Dropdown */}
+          <div>
+            <label htmlFor="qualification" className="block text-sm font-medium text-gray-700">
+              Qualification
+            </label>
+            <select
+              name="qualification"
+              id="qualification"
+              value={formData.qualification}
+              onChange={handleChange}
+              required
+              className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+            >
+              <option value="">Select Qualification</option>
+              {qualificationOptions.map((qual) => (
+                <option key={qual} value={qual}>{qual}</option>
+              ))}
+            </select>
+          </div>
+
+          {/* Marks Section */}
+          <div className="grid md:grid-cols-2 gap-6">
+            <div>
+              <label htmlFor="tenthMarks" className="block text-sm font-medium text-gray-700">
+                Tenth Marks (Out of 600)
+              </label>
+              <div className="flex items-center">
+                <input
+                  type="number"
+                  name="tenthMarks"
+                  id="tenthMarks"
+                  min="0"
+                  max="600"
+                  required
+                  value={formData.tenthMarks}
+                  onChange={handleChange}
+                  className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                />
+                <span className="ml-2 text-gray-500">/ 600</span>
+              </div>
+            </div>
+
+            <div>
+              <label htmlFor="tenthGrade" className="block text-sm font-medium text-gray-700">
+                Tenth Grade
+              </label>
+              <select
+                name="tenthGrade"
+                id="tenthGrade"
+                required
+                className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+              >
+                <option value="">Select Grade</option>
+                {gradeOptions.map((grade) => (
+                  <option key={grade.value} value={grade.value}>{grade.label}</option>
+                ))}
+              </select>
+            </div>
+          </div>
+
+          {/* Intermediate Marks */}
+          <div className="grid md:grid-cols-2 gap-6">
+            <div>
+              <label htmlFor="interMarks" className="block text-sm font-medium text-gray-700">
+                Intermediate Marks
+              </label>
+              <input
+                type="number"
+                step="0.01"
+                name="interMarks"
+                id="interMarks"
+                required
+                value={formData.interMarks}
+                onChange={handleChange}
+                className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+              />
+            </div>
+
+            <div>
+              <label htmlFor="phone" className="block text-sm font-medium text-gray-700">
+                Phone Number
+              </label>
+              <input
+                type="tel"
+                name="phone"
+                id="phone"
+                required
+                value={formData.phone}
+                onChange={handleChange}
+                className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+              />
+            </div>
+          </div>
+
+          {/* File Uploads */}
+          <div className="grid md:grid-cols-2 gap-6">
+            <div>
+              <label htmlFor="tenthCertificate" className="block text-sm font-medium text-gray-700">
+                Tenth Certificate
+              </label>
+              <input
+                type="file"
+                name="tenthCertificate"
+                id="tenthCertificate"
+                onChange={handleFileChange}
+                className="mt-1 block w-full text-sm text-gray-500
+                  file:mr-4 file:py-2 file:px-4
+                  file:rounded-full file:border-0
+                  file:text-sm file:font-semibold
+                  file:bg-indigo-50 file:text-indigo-700
+                  hover:file:bg-indigo-100"
+              />
+            </div>
+
+            <div>
+              <label htmlFor="casteCertificate" className="block text-sm font-medium text-gray-700">
+                Caste Certificate
+              </label>
+              <input
+                type="file"
+                name="casteCertificate"
+                id="casteCertificate"
+                onChange={handleFileChange}
+                className="mt-1 block w-full text-sm text-gray-500
+                  file:mr-4 file:py-2 file:px-4
+                  file:rounded-full file:border-0
+                  file:text-sm file:font-semibold
+                  file:bg-indigo-50 file:text-indigo-700
+                  hover:file:bg-indigo-100"
+              />
+            </div>
+          </div>
+
+          {/* Reason and Bank Details */}
+          <div className="grid md:grid-cols-2 gap-6">
+            <div>
+              <label htmlFor="reason" className="block text-sm font-medium text-gray-700">
+                Reason for Scholarship
+              </label>
+              <textarea
+                name="reason"
+                id="reason"
+                required
+                value={formData.reason}
+                onChange={handleChange}
+                rows={4}
+                className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+              ></textarea>
+            </div>
+
+            <div>
+              <label htmlFor="bankDetails" className="block text-sm font-medium text-gray-700">
+                Bank Details
+              </label>
+              <textarea
+                name="bankDetails"
+                id="bankDetails"
+                required
+                value={formData.bankDetails}
+                onChange={handleChange}
+                rows={4}
+                className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+              ></textarea>
+            </div>
+          </div>
+
+          {/* Submit Button */}
+          <div className="pt-6">
+            <button
+              type="submit"
+              className="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            >
+              Submit Application
+            </button>
+          </div>
+        </form>
       </div>
-      <div>
-        <label>Date of Birth:</label>
-        <input
-          type="date"
-          name="dob"
-          value={formData.dob}
-          onChange={handleChange}
-          required
-        />
-      </div>
-      <div>
-        <label>Qualification:</label>
-        <input
-          type="text"
-          name="qualification"
-          value={formData.qualification}
-          onChange={handleChange}
-          required
-        />
-      </div>
-      <div>
-        <label>Tenth Marks:</label>
-        <input
-          type="number"
-          step="0.01"
-          name="tenthMarks"
-          value={formData.tenthMarks}
-          onChange={handleChange}
-          required
-        />
-      </div>
-      <div>
-        <label>Intermediate Marks:</label>
-        <input
-          type="number"
-          step="0.01"
-          name="interMarks"
-          value={formData.interMarks}
-          onChange={handleChange}
-          required
-        />
-      </div>
-      <div>
-        <label>Graduation Marks:</label>
-        <input
-          type="number"
-          step="0.01"
-          name="graduationMarks"
-          value={formData.graduationMarks}
-          onChange={handleChange}
-          required
-        />
-      </div>
-      <div>
-        <label>Post Graduation Marks:</label>
-        <input
-          type="number"
-          step="0.01"
-          name="postGradMarks"
-          value={formData.postGradMarks}
-          onChange={handleChange}
-          required
-        />
-      </div>
-      <div>
-        <label>Phone:</label>
-        <input
-          type="text"
-          name="phone"
-          value={formData.phone}
-          onChange={handleChange}
-          required
-        />
-      </div>
-      <div>
-        <label>Reason for Scholarship:</label>
-        <textarea
-          name="reason"
-          value={formData.reason}
-          onChange={handleChange}
-          required
-        ></textarea>
-      </div>
-      <div>
-        <label>Bank Details:</label>
-        <textarea
-          name="bankDetails"
-          value={formData.bankDetails}
-          onChange={handleChange}
-          required
-        ></textarea>
-      </div>
-      {/* File Uploads */}
-      <div>
-        <label>Tenth Certificate:</label>
-        <input type="file" name="tenthCertificate" onChange={handleFileChange} />
-      </div>
-      <div>
-        <label>Intermediate Certificate:</label>
-        <input type="file" name="interCertificate" onChange={handleFileChange} />
-      </div>
-      <div>
-        <label>Graduation Certificate:</label>
-        <input type="file" name="graduationCertificate" onChange={handleFileChange} />
-      </div>
-      <div>
-        <label>Post Graduation Certificate:</label>
-        <input type="file" name="postGradCertificate" onChange={handleFileChange} />
-      </div>
-      <div>
-        <label>Income Proof:</label>
-        <input type="file" name="incomeProof" onChange={handleFileChange} />
-      </div>
-      <div>
-        <label>Caste Certificate:</label>
-        <input type="file" name="casteCertificate" onChange={handleFileChange} />
-      </div>
-      <div>
-        <label>Domicile Certificate:</label>
-        <input type="file" name="domicileCertificate" onChange={handleFileChange} />
-      </div>
-      <button type="submit">Submit Application</button>
-    </form>
+    </div>
   );
 };
 

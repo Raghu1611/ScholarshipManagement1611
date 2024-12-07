@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-
+import './UserDetailsPage.css'
 const ScholarshipApplicationsList = () => {
   const [applications, setApplications] = useState([]);
 

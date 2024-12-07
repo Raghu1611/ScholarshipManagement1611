@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom"; // Import useNavigate hook
 import axios from "axios";
-import './ApplyScholarship.css'; // Import the CSS file
-
+// Import the CSS file
+import './Apply.css'
 const ApplyScholarship = () => {
   const [scholarships, setScholarships] = useState([]);
   const [email, setEmail] = useState(""); // State for email input
